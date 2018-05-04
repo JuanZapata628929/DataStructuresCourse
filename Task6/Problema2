@@ -1,0 +1,60 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class Problema2 
+{
+	// Utilizo un metodo para poder imprimer el arreglo y comprobarlo.
+	public void printArray(int[]array)
+	{
+		BufferedWriter bw= new BufferedWriter (new OutputStreamWriter(System.out));
+				try
+		{
+				for (int i = 0; i < array.length; i++)
+					bw.write(array[i] + " ");
+		}
+		catch (Exception ex) {}
+	}
+
+	public static void main(String[] args) throws IOException {
+		 
+		 // recibo por consola el arreglo separado por comas 
+		   BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		   String line = br.readLine();
+		   String[] numeros = line.split(",");
+		// Creo otro arreglo  para pasar el arreglo que es una cadena a entero
+		   int[]arreglo=new int[numeros.length];
+		   
+		   for(int i=0; i <numeros.length; i++)
+			   arreglo[i] = Integer.parseInt(numeros[i]);
+		   
+		 //Este sera la posicion que ayudara a comprobar que no se multiplique el numero por la misma posicion en la que esta
+		   
+		 // Multi guardara la multiplicación de los numeros para pasarla al final a la posicion del arreglo correspondiente
+		   int multi=1;
+		 // El primer ciclo nos dira en que posicion vamos
+		   for(int i = 0; i < arreglo.length;i++)
+		   {
+			   // El segundo ciclo multiplicara tosdo el arreglo para guardarlo en la indicada posicion
+			   for (int j=0;i < arreglo.length;j++)
+			   {
+         //Se añade un condicional.
+				if (i==j) 
+				{
+					j+=1;
+				} 
+        //Despues de hacer la comparacion anterior se multiplicara por la posicion en la que este
+					multi = multi * arreglo[j];
+				
+				
+			   }
+			   
+			   arreglo[i]=multi;
+		   }
+		   //se imprimen los datos con las multiplicaciones hechas
+		   Problema2 imprimir = new Problema2();
+		   imprimir.printArray(arreglo);
+	}
+}
