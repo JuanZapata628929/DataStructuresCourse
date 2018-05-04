@@ -1,0 +1,45 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class Problema_1 {
+
+	 public static void main(String[] args) throws IOException {	
+		 
+		 //recibo los casos de prueba.
+		 BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		 BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
+		 
+		 bw.write("Numero de casos de prueba");
+		 String a= br.readLine();
+		 int T= Integer.parseInt(a);
+     //Se recorre el for 
+		 for (int i=0; i<T;i++)
+		 {
+     //se solicita el numero de amigos que invitara
+			bw.write("Numero de amigos para la fiesta");
+		 	String b= br.readLine();
+		 	int N= Integer.parseInt(b);
+      // se solicita el numero de chocolates que tiene el paquete
+		 	bw.write("Numero de chocolates del paquete");
+		 	String c= br.readLine();
+		 	int M= Integer.parseInt(c);
+     
+		 	int modulo = M%N;
+      // Se pone la condicion de si el modulo o division de la operación es cero
+      //retornara si
+		 	if (modulo ==0)
+		 	{
+      //cumplio la condicion asi que se mostrara en pantalla "Si"
+		 		System.out.println("Si");
+		 	}
+		 	if (modulo >=1)
+		 	{
+      //no cumplio la condicion por lo tanto mostrara que "No"
+		 	System.out.println("No");
+		 	}
+		 }
+		 
+	}
