@@ -1,0 +1,57 @@
+package Problemas;
+
+import java.util.Scanner;
+
+public class Primos {
+	 static Scanner sc = new Scanner(System.in);
+	 
+	 	static boolean primo(int num, int c)
+	 	{
+    //Se añade la condicion
+	 		if (num % c == 0 && num !=2)
+	 		{
+	 			return false;
+	 			
+	 		}
+	 		else
+      //Al no cumplirse se añade una nueva condicion para saber si es primo o no
+	 		{
+	 			if (c > num/2)
+	 			{
+	 				return true;
+	 			}
+	 			else
+	 			{
+	 				return primo(num,c+1);
+	 			}
+	 		}
+	 	}
+
+	 	public static void main(String[]args) {
+	 		
+	 		int num,i;
+	 		int[] primos = new int[100];
+	 		int contador=0;
+	 		//Se solicitara el numero hasta el cual desea buscar numeros primos.
+	 		System.out.println("hasta que numero quiere averiguar: ");
+	 		num = sc.nextInt();
+      //Se recorre el arreglo
+	 		for (i=0;i<num;i++)
+	 		{
+	 			if (primo(i,2)) 
+	 			{
+	 				primos[contador]=i; 
+	 				contador = contador + 1;
+	 		 
+	 			}
+	 		 
+	 		}
+      //Se muestra en pantalla los numeros primos
+	 		for (i=0;i<contador;i++) 
+	 		{
+	 			System.out.print(primos[i]+(" "));
+	 		}
+	 	}
+
+	}
+
