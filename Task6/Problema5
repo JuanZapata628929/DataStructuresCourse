@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Problema5 {  
+	
+
+	public static void main(String[] args) throws IOException {
+		 
+		 // Recibo por consola el arreglo separado por comas.
+		   BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		   String line = br.readLine();
+		   String[] numeros = line.split(",");
+		// Este arreglo servira para pasar el arreglo que es una cadena a ser entero.
+		   int[]arreglo=new int[numeros.length];
+		   
+		   for(int i=0; i <numeros.length; i++)
+			   arreglo[i] = Integer.parseInt(numeros[i]);
+		  
+		 
+		 //Se inician los contadores.
+		   int min_value= 100;
+		   int num_faltante=0;
+       
+		   //Recorrro el arreglo para buscar la secuencia.
+		   for (int i= arreglo.length-1; i>0; i = i-1)
+		   {
+			   int secuencia= arreglo[i] - arreglo[i-1];
+			   if (secuencia<min_value)
+			   {
+				   min_value=secuencia;
+			   }
+		   }
+		   //Se comparan los datos de la secuencia para hallar cual es la diferencia en el arreglo
+		   for (int i = arreglo.length-1;i>0; i = i-1) 
+		   {
+			   if ((arreglo[i]-arreglo[i-1])!=min_value)
+			   {
+         //Se le colocara el valor restandole la posicion en la que esta con la diferencia de la secuencia
+				   num_faltante= arreglo[i]-min_value;
+			   }
+		   }
+		   //Se imprimira el valor faltante
+		   System.out.println("El numero faltante en la secuencia es: "+ num_faltante);
+	}
+		   
+}
