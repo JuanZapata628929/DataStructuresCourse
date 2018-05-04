@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Problema4 {
+	
+	public static void main(String[] args) throws IOException {
+		 // recibo por consola el arreglo separado por comas.
+		   BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		   String line = br.readLine();
+		   String[] numeros = line.split(",");
+		// Este arreglo servira para pasar el arreglo que es una cadena a ser entero
+		   int[]arreglo=new int[numeros.length];
+		 
+		   for(int i=0; i <numeros.length; i++)
+			   arreglo[i] = Integer.parseInt(numeros[i]);
+		 
+		// Esta variable guardara el numero mas grande del arreglo
+		   int max = Integer.MIN_VALUE;
+		 // Esta variable gurdara el numero mas pequeño del arreglo
+		   int min= Integer.MAX_VALUE;
+		   
+		 // Buscamos el numero mas grande
+		   for(int i=0; i<arreglo.length;i++)
+		   {
+			   if (arreglo[i]>max)
+				   max=arreglo[i];
+		   }
+		 // Buscamos el numero mas pequeño
+		   for(int i=0; i<arreglo.length;i++)
+		   {
+			   if (arreglo[i]<min)
+				   min=arreglo[i];
+		   }
+		   
+		   // Al restarlo nos dara el maximo beneficio que puede tener
+		   int MaxiBen= max-min;
+		   
+		   System.out.println("el maximo benefisio que puede sacar de la semana es de "+ MaxiBen);
+	}
+}
