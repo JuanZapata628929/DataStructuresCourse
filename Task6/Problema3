@@ -1,0 +1,49 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Problema3 {
+	
+	public static void main(String[] args) throws IOException {
+		 // recibo por consola el arreglo separado por comas 
+		   BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		   String line = br.readLine();
+		   String[] numeros = line.split(",");
+		// Este arreglo  servira para pasar mi arreglo de ser cadena a ser entero
+		   int[]arreglo=new int[numeros.length];
+		   
+		   for(int i=0; i <numeros.length; i++)
+			   arreglo[i] = Integer.parseInt(numeros[i]);
+		   
+		   // Esta variable  servira para averiguar cual es el numero mayor del arreglo
+		   // Posteriormente sera la longitud de nuestro arreglo auxiliar
+		   int max = Integer.MIN_VALUE;
+		   
+		   for (int i=0;i < arreglo.length;i++)
+		   {
+			   if (arreglo[i]>max)
+			   {
+				   max=arreglo[i];
+			   }
+		   }
+		   int [] auxiliar= new int[max +1];
+		   
+		   //Este ciclo sumara 1 al indice donde este el auxiliar ya que este es el arrego original
+		   for (int i=0;i < arreglo.length;i++)
+		   {
+			   auxiliar[arreglo[i]]+=1;
+		   }
+		   // Esta variable guardara el numero que no se repite
+		   int k= 0;
+		   // este ciclo buscara entre el arreglo auxiliar el que no cumpla la condicion sera el que no esta repetido
+		   for (int i=0; i < auxiliar.length; i ++)
+		   {
+			   if (auxiliar[i]==1)
+			   {
+				   k = i;
+			   } 
+		   }
+		   //se imprime en pantalla la solución del problema.
+		   System.out.println("El numero que no se repite es "+k);
+	}
+}
