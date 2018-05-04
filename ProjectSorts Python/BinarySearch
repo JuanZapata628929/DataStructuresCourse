@@ -1,0 +1,41 @@
+'''
+Created on 23/04/2018
+
+@author: Juan Manuel Zapata
+'''
+def BinarySearch (A, x):
+    
+    lowerBound =0
+    upperBound = (len(A)-1)
+    index = -1
+
+    while (lowerBound < upperBound):
+        middlePoint=(lowerBound + upperBound) /2
+    if x == A[middlePoint]:
+        index =middlePoint
+    else:
+        if x < A[middlePoint]:
+            upperBound = middlePoint -1
+        else:
+            lowerBound =middlePoint +1
+            
+    if lowerBound == upperBound and A[lowerBound] == x:
+        index=lowerBound
+
+    return index
+
+//Se recibira el arreglo separado por comas.
+numeros = input().split(",")
+numeros_=[]
+//Se recorrera el arreglo
+for j in range (len(numeros)):
+    numeros_.append(int(numeros[j]))
+//Se pedira el numero a buscar
+x= input("Numero a buscar")
+
+indice= BinarySearch(numeros_, x)
+//Se muestra en pantalla el resultado de la busqueda.
+if indice!=-1:
+    print("El numero esta en el indice: ", indice)
+else:
+    print("El numero no esta")
