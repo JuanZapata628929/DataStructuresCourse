@@ -1,0 +1,50 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+
+public class Problema1 { 
+		
+ 
+	 public static void main(String[] args) throws IOException {
+		 
+		 // recibo por consola mi arreglo separado por comas 
+		   BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		   BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
+		   String line = br.readLine();
+		   String[] numeros = line.split(",");
+		 // Creo otro arreglo el cual servira para pasar mi arreglo que es una cadena a ser entero
+		   int[]arreglo=new int[numeros.length];
+		   
+		   for(int i=0; i <numeros.length; i++)
+			   arreglo[i] = Integer.parseInt(numeros[i]);
+		   
+		 // Pregunto cual es el residuo que me pondra la condición
+		   bw.write("residuo a buscar");
+		   bw.flush();
+		   System.out.println("Residuo a buscar");
+		   String k=br.readLine();
+		   int L = Integer.parseInt(k);
+		   
+		 // Un contador para guardar la cantidad de parejas
+		   int contador= 0;
+		   
+		 // Pasara por todo el arreglo y que no solo compare un solo numero
+		   for (int i=0; i < arreglo.length;i++)
+		   {
+			   // Se tomara el numero en el ciclo anterior y se compara con los demas numeros del arreglo
+			   for(int j=0; j < arreglo.length;j++)
+			   {
+				  // Cada vez que se cumpla la condición se sumara esa pareja al contado
+				   if (arreglo[i]-arreglo[j]==L)
+				   {
+					   contador =contador+1;
+				   }
+			   }
+		   }
+		   // Imprimo las parejas que han cumplido la condición.
+		   System.out.println("la cantidad de parejas que cumplen con la condicio es de: "+contador+" en total");
+	   }
+}
