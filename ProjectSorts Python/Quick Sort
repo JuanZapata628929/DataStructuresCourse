@@ -1,0 +1,56 @@
+'''
+Created on 23/04/2018
+
+@author: Juan Manuel Zapata
+
+'''
+
+def quicksort(L):
+    quicksort1(L,0, len(L)-1)
+
+def quicksort1(L, first, last):
+
+    i = first
+    j = last    
+    pivote = (L[i] + L[j]) / 2
+
+    # iteramos hasta que i no sea menor que j
+    while i < j:
+        # iteramos mientras que el valor de L[i] sea menor que pivote
+        while L[i] < pivote:
+           
+            i+=1
+        # iteramos mientras que el valor de L[j] sea mayor que pivote
+        while L[j] > pivote:
+           
+            j-=1
+
+        if (i <= j):
+            # creamos una variable temporal para guardar el valor de L[j]
+            x = L[j]
+            # intercambiamos los valores de L[j] y L[i]
+            L[j] = L[i]
+            L[i] = x
+            # incrementamos y decrementamos i y j respectivamente
+            i+=1
+            j-=1
+
+    # si first es menor que j mantenemos la recursividad
+    if first < j:
+        L = quicksort1(L, first, j)
+    # si last es mayor que i mantenemos la recursividad
+    if last > i:
+        L = quicksort1(L, i, last)
+
+    # devolvemos la lista ordenada
+    return L
+#Se recibe el arreglo separado por comas.
+numeros = input().split(",")
+numeros_=[]
+#Se recorre el arreglo
+for j in range (len(numeros)):
+    numeros_.append(int(numeros[j]))
+    
+quicksort(numeros_)
+#Se muestra en pantalla el arreglo ordenado.
+print(numeros_)
