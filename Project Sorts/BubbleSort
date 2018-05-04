@@ -1,0 +1,40 @@
+package sorts;
+
+/**
+ *
+ * @author Juan Manuel Zapata
+ */
+
+import java.io.*;
+public class Bubble_Sort {
+
+	static void BubbleSort(int array[]) {
+  //Se recorrera el arreglo.
+		for(int i =0; i < array.length -1;i++) {
+			for (int j=0; j < array.length -1;j++) {
+				if (array[j]> array[j+1]) {
+					int temp = array[j];
+					array[j]= array[j+1];
+					array[j+1]= temp;
+				}
+			}
+		}
+	}
+	public static void main(String[]args) throws IOException{
+	//recibo el arreglo separado por comas.
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String line = br.readLine();
+		String[] numeros = line.split(",");
+    // Este arreglo servira para pasar el arreglo que es una cadena a ser entero.
+		int [] array= new int [numeros.length];
+    
+		for (int i=0; i <numeros.length;i++) {
+			array[i] = Integer.parseInt(numeros[i]);
+		}
+		BubbleSort(array);
+    //Se muestra en pantalla el arreglo ordenado.
+		for (int i =0; i< array.length;i++) {
+			System.out.print(array[i]+(" "));
+		}
+	}
+}
