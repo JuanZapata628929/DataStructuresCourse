@@ -1,0 +1,34 @@
+'''
+Created on 23/04/2018
+
+@author: Juan Manuel Zapata
+'''
+def insertionshort(A):
+    # Se recorrera el arreglo desde la segunda posicion de la lista
+    for i in range(1,len(A)):
+        # Se guardara el valor en donde se encuentra la pocicion actual
+        x=A[i]
+        # El indice en el que esta menos 1 ya que se inicio una posicion adelante
+        indice=i-1
+        #Comprobe que el indice no saliese del rango
+        while(indice>=0):
+            # se hace el cambio si se cumple la condicion 
+            if(x<A[indice]):
+                A[indice+1]=A[indice]
+                #se cambia la posicion y le asignamos la nueva
+                A[indice]=x 
+                indice=indice-1
+            # si no se cumple lo dejamos ahi
+            else:
+                break
+    # retornamos el arreglo ya ordenado
+    return A
+        
+numeros = input().split(",")
+numeros_=[]
+for j in range (len(numeros)):
+    numeros_.append(int(numeros[j]))
+    
+insertionshort(numeros_)
+#se muestra en pantalla el arreglo ordenado
+print(numeros_)
